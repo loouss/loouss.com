@@ -9,7 +9,16 @@ tags: php
 
 ## hyperf源码分析
 
+- #### 流程
 
+  1. 入口文件创建container
+  2. 初始化container时调用 DefinitionSourceFactory 返回 DefinitionSource对象
+  3. DefinitionSourceFactory __invoke() 读取框架配置，实例化 ScanConfig::class
+  4. 实例化 DefinitionSource::class 
+  5. 在 DefinitionSource::class 构造方法中 调用 scan() 扫描文件并加载元数据，添加ast，收集已扫描文件的注释并存储。
+  6. 在 DefinitionSource::class 构造方法中 调用 normalizeSource() 方法存储类的 DefinitionInterface 的实例。
+  7. 入口文件调用container get方法获取 ApplicationFactory class ，在ApplicationFactory类中添加 commond 返回symfony/console 组件 Application 示例
+  8. 根据控制台输入命令启动相应模块
 
 - #### 入口文件
 
@@ -76,6 +85,7 @@ tags: php
        // $scanConfig “Hyperf\Di\Definition\DefinitionSourceFactory 类中读取配置文件值部分”
        // Scan the specified paths and collect the ast and annotations.
        $this->scan($scanConfig->getDirs(), $scanConfig->getCollectors());
+       // 存储$definitions
        $this->source = $this->normalizeSource($source);
    }
    ...
@@ -121,9 +131,11 @@ tags: php
        }
        $cachePath = $this->cachePath . '.' . $type . '.cache';
        $pathsHash = md5(implode(',', $paths));
+       //hash 和 文件更新时间判断缓存是否有效 缓存有效则不需要扫描文件
        if ($this->hasAvailableCache($paths, $pathsHash, $cachePath)) {
            $this->printLn('Detected an available cache, skip the ' . $type . ' scan process.');
            [, $serialized] = explode(PHP_EOL, file_get_contents($cachePath));
+           //收集类，属性，方法的注释到 Hyperf\Di\Annotation\AnnotationCollector::$container中
            $this->scanner->collect(unserialize($serialized));
            return false;
        }
