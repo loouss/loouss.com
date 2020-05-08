@@ -117,3 +117,76 @@ composer 将注册一个 [PSR-4](http://www.php-fig.org/psr/psr-4/) autoloader �
       
 
 > [更多环境变量](https://getcomposer.org/doc/03-cli.md#environment-variables)
+
+
+
+## composer.json 字段解释
+
+以`laravel` 项目的`composer.json`文件为例
+
+```json
+{
+    "name": "laravel/laravel", //包的名称，它包括供应商名称和项目名称，使用 / 分隔
+    "type": "project",//安装类型
+    "description": "The Laravel Framework.",//简短描述
+    "keywords": [//关键词数组
+        "framework",
+        "laravel"
+    ],
+    "license": "MIT",//许可协议
+    "require": {
+        "php": "^7.2.5",
+        "fideloper/proxy": "^4.2",
+        "fruitcake/laravel-cors": "^1.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "laravel/framework": "^7.0",
+        "laravel/tinker": "^2.0"
+    },
+    "require-dev": {
+        "facade/ignition": "^2.0",
+        "fzaninotto/faker": "^1.9.1",
+        "mockery/mockery": "^1.3.1",
+        "nunomaduro/collision": "^4.1",
+        "phpunit/phpunit": "^8.5"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    }
+}
+
+```
