@@ -18,7 +18,6 @@ git clone --bare https://xxx.xxx.git
 ```
 
 2. 进入仓库文件夹`push`到新的仓库地址
-
 ```shell
 
 git push --mirror https://xxx.xxx.git
