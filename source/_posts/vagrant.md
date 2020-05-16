@@ -121,5 +121,3 @@ For help on any individual subcommand run `vagrant box <subcommand> -h`
 
 
 
-
-
