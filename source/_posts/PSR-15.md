@@ -77,7 +77,7 @@ tags:
       public function handle(ServerRequestInterface $request): ResponseInterface
       {
           $middleware = $this->middlewares[$this->offset];
-          $middleware->process($request, $this->next());
+          return $middleware->process($request, $this->next());
       }
       
       protected function next(): self
