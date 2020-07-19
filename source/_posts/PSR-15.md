@@ -101,5 +101,5 @@ tags:
   
   ~~~
 
-  > 请求处理器与中间互相调用，直至在中间件中返回 ***ResponseInterface*** 。
+  > 请求处理器与中间互相调用，直至在中间件中返回 ***ResponseInterface*** 实例。
 
