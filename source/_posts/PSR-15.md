@@ -103,3 +103,4 @@ tags:
 
   > 请求处理器与中间互相调用，直至在中间件中返回 ***ResponseInterface*** 实例。
 
+![](https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/psr15.jpg)
