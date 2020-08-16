@@ -5,15 +5,12 @@ tags:
 ---
 
 ~~~shell
-
 docker run --detach --restart always --hostname gitlab.xx.xx --publish 127.0.0.1:8080:80 --publish 0.0.0.0:22:22 --name gitlab --volume /application/gitlab/logs:/var/log/gitlab --volume /application/gitlab/data:/var/opt/gitlab --volume /application/gitlab/config:/etc/gitlab gitlab/gitlab-ce
-
 ~~~
 
 > 如果存在版本升级情况，请按照[升级路径](https://docs.gitlab.com/ee/policy/maintenance.html#upgrading-major-versions)升级
 
 ~~~
-
 server {
     listen       443 ssl http2;
     listen       [::]:443 ssl http2;
@@ -32,5 +29,4 @@ server {
     }
 
 }
-
 ~~~
