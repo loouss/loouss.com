@@ -10,7 +10,7 @@ docker run --detach --restart always --hostname gitlab.xx.xx --publish 127.0.0.1
 
 ~~~
 
-> ????????????[??](https://docs.gitlab.com/ee/policy/maintenance.html#upgrading-major-versions)  
+> 如果存在版本升级情况，请按照[升级路径](https://docs.gitlab.com/ee/policy/maintenance.html#upgrading-major-versions)升级
 
 ~~~
 
