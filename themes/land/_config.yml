@@ -35,7 +35,7 @@ brand: /img/brand.jpg
 favicon: /favicon.ico
 
 # email
-email: loouss@qq.com
+email: loouss.ls@gmail.com
 
 # 设置 Android L Chrome 浏览器状态栏颜色
 color: '#3F51B5'
@@ -83,7 +83,7 @@ postMessage: 这里可以写作者留言，标签和 hexo 中所有变量及辅�
 cnzz: false
 
 # 百度统计，如要开启，改为你的 key
-baidu_tongji: false
+baidu_tongji: 12e321e197d202cf8342c4edea9bf19a
 
 # 腾讯分析，如要开启，输入站点id
 tajs: false
