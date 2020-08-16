@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>PSR-15 | Loouss</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="PSR 15     HTTP请求处理器主要接口 RequestHandlerInterface 请求处理器 12345678910111213141516171819namespace Psr\Http\Server;use Psr\Http\Message\ResponseInterface;use Psr\Http\Message\ServerRequestInterface;&#x2F;** * 处">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PSR-15">
+<meta property="og:url" content="https://loouss.github.io/2020/07/19/PSR-15/index.html">
+<meta property="og:site_name" content="Loouss">
+<meta property="og:description" content="PSR 15     HTTP请求处理器主要接口 RequestHandlerInterface 请求处理器 12345678910111213141516171819namespace Psr\Http\Server;use Psr\Http\Message\ResponseInterface;use Psr\Http\Message\ServerRequestInterface;&#x2F;** * 处">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/psr15.jpg">
+<meta property="article:published_time" content="2020-07-19T15:20:26.000Z">
+<meta property="article:modified_time" content="2020-08-16T11:21:47.276Z">
+<meta property="article:author" content="Loouss">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/psr15.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Loouss" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Loouss</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://loouss.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-PSR-15" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/19/PSR-15/" class="article-date">
+  <time datetime="2020-07-19T15:20:26.000Z" itemprop="datePublished">2020-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PSR-15
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="PSR-15-HTTP请求处理器"><a href="#PSR-15-HTTP请求处理器" class="headerlink" title="PSR 15     HTTP请求处理器"></a>PSR 15     HTTP请求处理器</h1><h3 id="主要接口"><a href="#主要接口" class="headerlink" title="主要接口"></a>主要接口</h3><ul>
+<li><p>RequestHandlerInterface 请求处理器</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">Psr</span>\<span class="title">Http</span>\<span class="title">Server</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Psr</span>\<span class="title">Http</span>\<span class="title">Message</span>\<span class="title">ResponseInterface</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Psr</span>\<span class="title">Http</span>\<span class="title">Message</span>\<span class="title">ServerRequestInterface</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 处理服务器请求并返回响应</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * HTTP 请求处理程序处理 HTTP 请求，以便生成 HTTP 相应。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">RequestHandlerInterface</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 处理服务器请求并返回响应</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * 可以调用其他协助代码来生成响应。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span><span class="params">(ServerRequestInterface $request)</span>: <span class="title">ResponseInterface</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MiddlewareInterface  中间件</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">Psr</span>\<span class="title">Http</span>\<span class="title">Server</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Psr</span>\<span class="title">Http</span>\<span class="title">Message</span>\<span class="title">ResponseInterface</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Psr</span>\<span class="title">Http</span>\<span class="title">Message</span>\<span class="title">ServerRequestInterface</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 参与处理服务器的请求与响应</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 一个 HTTP 中间件组件参与处理一个 HTTP 的消息:</span></span><br><span class="line"><span class="comment"> * 通过对请求进行操作, 生成相应,或者将请求转发给后续的中间件，并  且可能对它的响应进行操作</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">MiddlewareInterface</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 处理一个传入的请求</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * 处理传入的服务器请求以产生相应.</span></span><br><span class="line"><span class="comment">     * 如果无法生成响应本身，它可能会委托给提供的请求处理程序来执行此操作</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">process</span><span class="params">(ServerRequestInterface $request, RequestHandlerInterface $handler)</span>: <span class="title">ResponseInterface</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h3 id="简单实现示例（伪代码）"><a href="#简单实现示例（伪代码）" class="headerlink" title="简单实现示例（伪代码）"></a>简单实现示例（伪代码）</h3><ul>
+<li><p>RequestHandlerInterface 请求处理器</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HttpRequestHandler</span> <span class="keyword">implements</span> <span class="title">RequestHandlerInterface</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">protected</span> $middlewares = [];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">protected</span> $offset = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span><span class="params">(ServerRequestInterface $request)</span>: <span class="title">ResponseInterface</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $middleware = <span class="keyword">$this</span>-&gt;middlewares[<span class="keyword">$this</span>-&gt;offset];</span><br><span class="line">        <span class="keyword">return</span> $middleware-&gt;process($request, <span class="keyword">$this</span>-&gt;next());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">next</span><span class="params">()</span>: <span class="title">self</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        ++<span class="keyword">$this</span>-&gt;offset;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MiddlewareInterface  中间件</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FormatMiddleware</span> <span class="keyword">implements</span> <span class="title">MiddlewareInterface</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">process</span><span class="params">(ServerRequestInterface $request, RequestHandlerInterface $handler)</span>: <span class="title">ResponseInterface</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> $handler-&gt;handle($request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>请求处理器与中间互相调用，直至在中间件中返回 <strong><em>ResponseInterface</em></strong> 实例。</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/psr15.jpg" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://loouss.github.io/2020/07/19/PSR-15/" data-id="ckdx01u2c000538orb02ue2zx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/08/03/Jenkins%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Jenkins简单示例
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/15/Git%E4%BB%93%E5%BA%93%E5%AE%8C%E6%95%B4%E8%BF%81%E7%A7%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Git仓库完整迁移</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/" rel="tag">RabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/" rel="tag">jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/RabbitMQ/" style="font-size: 10px;">RabbitMQ</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/16/%E5%AF%B9%E5%9B%BE%E7%89%87%E6%8C%89%E6%8B%8D%E6%92%92%E8%AE%BE%E5%A4%87%E5%92%8C%E6%97%B6%E9%97%B4%E5%88%86%E7%BB%84/">对图片按拍撒设备和时间分组</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/16/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/10/docker%E8%BF%90%E8%A1%8Cyapi/">docker运行yapi</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/09/docker%E8%BF%90%E8%A1%8Cgitlab/">docker运行gitlab</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/04/alpine%E9%95%9C%E5%83%8Fapk%E6%BA%90%E4%BF%AE%E6%94%B9/">alpine镜像apk源修改</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Loouss<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>composer | Loouss</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简介Composer 是 PHP 的一个依赖管理工具。它允许你申明项目所依赖的代码库，它会在你的项目中为你安装他们。 安装composer下载地址: https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;composer&#x2F;composer.phar  LIKE UNIX ：  1mv composer.phar &#x2F;usr&#x2F;local&#x2F;bin&#x2F;composer   WIN ：  设置系统的环境变量P">
+<meta property="og:type" content="article">
+<meta property="og:title" content="composer">
+<meta property="og:url" content="https://loouss.github.io/2020/05/08/composer/index.html">
+<meta property="og:site_name" content="Loouss">
+<meta property="og:description" content="简介Composer 是 PHP 的一个依赖管理工具。它允许你申明项目所依赖的代码库，它会在你的项目中为你安装他们。 安装composer下载地址: https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;composer&#x2F;composer.phar  LIKE UNIX ：  1mv composer.phar &#x2F;usr&#x2F;local&#x2F;bin&#x2F;composer   WIN ：  设置系统的环境变量P">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-08T15:00:39.000Z">
+<meta property="article:modified_time" content="2020-08-16T11:21:47.276Z">
+<meta property="article:author" content="Loouss">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Loouss" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Loouss</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://loouss.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-composer" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/08/composer/" class="article-date">
+  <time datetime="2020-05-08T15:00:39.000Z" itemprop="datePublished">2020-05-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      composer
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Composer 是 PHP 的一个依赖管理工具。它允许你申明项目所依赖的代码库，它会在你的项目中为你安装他们。</p>
+<h2 id="安装composer"><a href="#安装composer" class="headerlink" title="安装composer"></a>安装composer</h2><p>下载地址: <a href="https://mirrors.aliyun.com/composer/composer.phar" target="_blank" rel="noopener">https://mirrors.aliyun.com/composer/composer.phar</a></p>
+<ul>
+<li>LIKE UNIX ：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv composer.phar /usr/local/bin/composer</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>WIN ：</li>
+</ul>
+<p>设置系统的环境变量PATH。<br>在 composer.phar 同级目录下新建文件 composer.bat :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\bin&gt;echo @php "%~dp0composer.phar" %*&gt;composer.bat</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>验证安装</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer -v</span><br></pre></td></tr></table></figure>
+
+<h2 id="包版本"><a href="#包版本" class="headerlink" title="包版本"></a>包版本</h2><p>在前面的例子中，我们引入的 monolog 版本指定为 <code>1.0.*</code>。这表示任何从 <code>1.0</code> 开始的开发分支，它将会匹配 <code>1.0.0</code>、<code>1.0.2</code> 或者 <code>1.0.20</code>。</p>
+<p>版本约束可以用几个不同的方法来指定。</p>
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">实例</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">确切的版本号</td>
+<td align="left"><code>1.0.2</code></td>
+<td align="center">你可以指定包的确切版本。</td>
+</tr>
+<tr>
+<td align="left">范围</td>
+<td align="left"><code>&gt;=1.0</code> <code>&gt;=1.0,&lt;2.0</code> `&gt;=1.0,&lt;1.1</td>
+<td align="center">&gt;=1.2`</td>
+</tr>
+<tr>
+<td align="left">通配符</td>
+<td align="left"><code>1.0.*</code></td>
+<td align="center">你可以使用通配符<code>*</code>来指定一种模式。<code>1.0.*</code>与<code>&gt;=1.0,&lt;1.1</code>是等效的。</td>
+</tr>
+<tr>
+<td align="left">赋值运算符</td>
+<td align="left"><code>~1.2</code></td>
+<td align="center">这对于遵循语义化版本号的项目非常有用。<code>~1.2</code>相当于<code>&gt;=1.2,&lt;2.0</code>。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>~ (波浪号运算符) ，<code>~1.2</code> 相当于 <code>&gt;=1.2,&lt;2.0</code></p>
+</blockquote>
+<h2 id="composer-lock-锁文件"><a href="#composer-lock-锁文件" class="headerlink" title="composer.lock 锁文件"></a>composer.lock 锁文件</h2><p>在安装依赖包时，composer 会把安装时确切的版本号写入<code>composer.lock</code> 文件。</p>
+<p>通常情况下，需要提交 <code>composer.lock</code> 文件，因为 <code>install</code> 命令将会检查锁文件是否存在，如果存在，它将下载指定的版本。</p>
+<p>这意味着，任何人建立项目都将下载与指定版本完全相同的依赖。你的持续集成服务器、生产环境、你团队中的其他开发人员、每件事、每个人都使用相同的依赖，从而减轻潜在的错误对部署的影响。即使你独自开发项目，在六个月内重新安装项目时，你也可以放心的继续工作，即使从那时起你的依赖已经发布了许多新的版本。</p>
+<p>如果不存在 <code>composer.lock</code> 文件，Composer 将读取 <code>composer.json</code> 并创建锁文件。</p>
+<p>如果你需要更新依赖包，可以执行 <code>composer update</code> 命令，这将获取最新匹配的版本更新（根据 <code>composer.json</code> 文件）同时也会更新 <code>composer.lock</code> 文件。</p>
+<h2 id="自动加载"><a href="#自动加载" class="headerlink" title="自动加载"></a>自动加载</h2><p>安装依赖包时，composer 会生成 <code>vendor/autoload.php</code> 文件，引入这个文件即可实现自动加载。</p>
+<p>自定义命名空间加载也可以在 <code>composer.json</code> 的 <code>autoload</code> 字段中增加自己的命名空间与文件映射。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"autoload"</span>: &#123;</span><br><span class="line">        <span class="attr">"psr-4"</span>: &#123;<span class="attr">"App\\"</span>: <span class="string">"app/"</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>composer 将注册一个 <a href="http://www.php-fig.org/psr/psr-4/" target="_blank" rel="noopener">PSR-4</a> autoloader 到  <code>App</code> 命名空间。</p>
+<h2 id="composer-配置"><a href="#composer-配置" class="headerlink" title="composer 配置"></a>composer 配置</h2><h4 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h4><ul>
+<li><p><code>COMPOSER_HOME</code> </p>
+<p>  默认值：</p>
+<ul>
+<li><p>like unix <code>/home//.composer</code></p>
+</li>
+<li><p>OSX <code>/Users//.composer</code></p>
+</li>
+<li><p>Windows <code>C:\Users\AppData\Roaming\Composer</code></p>
+<p>可以在 <code>COMPOSER_HOME</code>  目录中配置  <code>config.json</code> 文件，在执行 <code>composer update</code> 或者 <code>composer install</code> 命令时，<code>composer</code> 会与项目中的 <code>composer.json</code> 文件进行合并。如果存在相同配置项，项目中的 <code>composer.json</code> 文件优先级更高。</p>
+</li>
+</ul>
+</li>
+<li><p><code>COMPOSER_CACHE_DIR</code></p>
+<p>  默认值：</p>
+<ul>
+<li><p>like unix <code>$COMPOSER_HOME/cache</code></p>
+</li>
+<li><p>Windows <code>C:\Users\\AppData\Local\Composer</code> 或 <code>%LOCALAPPDATA%/Composer</code></p>
+</li>
+<li><p>也可以通过 <code>cache-dir</code> 进行配置</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"config"</span>: &#123;</span><br><span class="line">        <span class="attr">"cache-dir"</span>: <span class="string">"D:\\php\\Composer\\cache"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>也可以将上面的上面的 <code>json</code> 文件添加到 <code>$COMPOSER_HOME/config.json</code> 文件中</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><a href="https://getcomposer.org/doc/03-cli.md#environment-variables" target="_blank" rel="noopener">更多环境变量</a></p>
+</blockquote>
+<h2 id="composer-json-字段解释"><a href="#composer-json-字段解释" class="headerlink" title="composer.json 字段解释"></a>composer.json 字段解释</h2><p>以<code>laravel</code> 项目的<code>composer.json</code>文件为例</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"laravel/laravel"</span>, <span class="comment">//包的名称，它包括供应商名称和项目名称，使用 / 分隔</span></span><br><span class="line">    <span class="attr">"type"</span>: <span class="string">"project"</span>,<span class="comment">//安装类型</span></span><br><span class="line">    <span class="attr">"description"</span>: <span class="string">"The Laravel Framework."</span>,<span class="comment">//简短描述</span></span><br><span class="line">    <span class="attr">"keywords"</span>: [<span class="comment">//关键词数组</span></span><br><span class="line">        <span class="string">"framework"</span>,</span><br><span class="line">        <span class="string">"laravel"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"license"</span>: <span class="string">"MIT"</span>,<span class="comment">//许可协议</span></span><br><span class="line">    <span class="attr">"require"</span>: &#123;</span><br><span class="line">        <span class="attr">"php"</span>: <span class="string">"^7.2.5"</span>,</span><br><span class="line">        <span class="attr">"fideloper/proxy"</span>: <span class="string">"^4.2"</span>,</span><br><span class="line">        <span class="attr">"fruitcake/laravel-cors"</span>: <span class="string">"^1.0"</span>,</span><br><span class="line">        <span class="attr">"guzzlehttp/guzzle"</span>: <span class="string">"^6.3"</span>,</span><br><span class="line">        <span class="attr">"laravel/framework"</span>: <span class="string">"^7.0"</span>,</span><br><span class="line">        <span class="attr">"laravel/tinker"</span>: <span class="string">"^2.0"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"require-dev"</span>: &#123;</span><br><span class="line">        <span class="attr">"facade/ignition"</span>: <span class="string">"^2.0"</span>,</span><br><span class="line">        <span class="attr">"fzaninotto/faker"</span>: <span class="string">"^1.9.1"</span>,</span><br><span class="line">        <span class="attr">"mockery/mockery"</span>: <span class="string">"^1.3.1"</span>,</span><br><span class="line">        <span class="attr">"nunomaduro/collision"</span>: <span class="string">"^4.1"</span>,</span><br><span class="line">        <span class="attr">"phpunit/phpunit"</span>: <span class="string">"^8.5"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"config"</span>: &#123;</span><br><span class="line">        <span class="attr">"optimize-autoloader"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"preferred-install"</span>: <span class="string">"dist"</span>,</span><br><span class="line">        <span class="attr">"sort-packages"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"extra"</span>: &#123;</span><br><span class="line">        <span class="attr">"laravel"</span>: &#123;</span><br><span class="line">            <span class="attr">"dont-discover"</span>: []</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"autoload"</span>: &#123;</span><br><span class="line">        <span class="attr">"psr-4"</span>: &#123;</span><br><span class="line">            <span class="attr">"App\\"</span>: <span class="string">"app/"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"classmap"</span>: [</span><br><span class="line">            <span class="string">"database/seeds"</span>,</span><br><span class="line">            <span class="string">"database/factories"</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"autoload-dev"</span>: &#123;</span><br><span class="line">        <span class="attr">"psr-4"</span>: &#123;</span><br><span class="line">            <span class="attr">"Tests\\"</span>: <span class="string">"tests/"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"minimum-stability"</span>: <span class="string">"dev"</span>,</span><br><span class="line">    <span class="attr">"prefer-stable"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">        <span class="attr">"post-autoload-dump"</span>: [</span><br><span class="line">            <span class="string">"Illuminate\\Foundation\\ComposerScripts::postAutoloadDump"</span>,</span><br><span class="line">            <span class="string">"@php artisan package:discover --ansi"</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">"post-root-package-install"</span>: [</span><br><span class="line">            <span class="string">"@php -r \"file_exists('.env') || copy('.env.example', '.env');\""</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">"post-create-project-cmd"</span>: [</span><br><span class="line">            <span class="string">"@php artisan key:generate --ansi"</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://loouss.github.io/2020/05/08/composer/" data-id="ckdx01u2j000b38or0cb27i6a" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/12/vagrant/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          vagrant
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/07/SteedPHP/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SteedPHP</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/" rel="tag">RabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/" rel="tag">jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/RabbitMQ/" style="font-size: 10px;">RabbitMQ</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/16/%E5%AF%B9%E5%9B%BE%E7%89%87%E6%8C%89%E6%8B%8D%E6%92%92%E8%AE%BE%E5%A4%87%E5%92%8C%E6%97%B6%E9%97%B4%E5%88%86%E7%BB%84/">对图片按拍撒设备和时间分组</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/16/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/10/docker%E8%BF%90%E8%A1%8Cyapi/">docker运行yapi</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/09/docker%E8%BF%90%E8%A1%8Cgitlab/">docker运行gitlab</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/04/alpine%E9%95%9C%E5%83%8Fapk%E6%BA%90%E4%BF%AE%E6%94%B9/">alpine镜像apk源修改</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Loouss<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
