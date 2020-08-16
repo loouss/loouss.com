@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Jenkins简单示例 | Loouss</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="Java 项目新建任务时项目类型选择 构建一个maven项目   构建项目配置 General 部分 填写项目信息，设置构建参数等  源码管理 可以选择 git,svn  git 填入仓库地址及访问密钥（Credentials），指定分支（branch）     构建触发器 可以用git push event触发Jenkins构建，或者定时器构建等   构建环境 没有特殊需求可以不用理会  Pre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jenkins简单示例">
+<meta property="og:url" content="https://loouss.github.io/2020/08/03/Jenkins%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/index.html">
+<meta property="og:site_name" content="Loouss">
+<meta property="og:description" content="Java 项目新建任务时项目类型选择 构建一个maven项目   构建项目配置 General 部分 填写项目信息，设置构建参数等  源码管理 可以选择 git,svn  git 填入仓库地址及访问密钥（Credentials），指定分支（branch）     构建触发器 可以用git push event触发Jenkins构建，或者定时器构建等   构建环境 没有特殊需求可以不用理会  Pre">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/jenkins4.png">
+<meta property="og:image" content="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/jenkins1.png">
+<meta property="og:image" content="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/jenkins2.png">
+<meta property="og:image" content="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/jenkins5.png">
+<meta property="og:image" content="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/jenkins6.png">
+<meta property="og:image" content="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/jenkins7.png">
+<meta property="article:published_time" content="2020-08-03T22:07:24.000Z">
+<meta property="article:modified_time" content="2020-08-16T11:29:48.425Z">
+<meta property="article:author" content="Loouss">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/jenkins4.png">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Loouss</h5>
+          <a href="mailto:loouss@qq.com" title="loouss@qq.com" class="mail">loouss@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/loouss" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Jenkins简单示例</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Jenkins简单示例</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-08-03T22:07:24.000Z" itemprop="datePublished" class="page-time">
+  2020-08-03
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Java-项目"><span class="post-toc-number">1.</span> <span class="post-toc-text">Java 项目</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#构建项目配置"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">构建项目配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#PHP项目"><span class="post-toc-number">2.</span> <span class="post-toc-text">PHP项目</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#构建项目配置-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">构建项目配置</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Jenkins简单示例"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Jenkins简单示例</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-08-03 22:07:24" datetime="2020-08-03T22:07:24.000Z"  itemprop="datePublished">2020-08-03</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Java-项目"><a href="#Java-项目" class="headerlink" title="Java 项目"></a>Java 项目</h1><p>新建任务时项目类型选择 <strong><em>构建一个maven项目</em></strong> </p>
+<p><img src="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/jenkins4.png" alt=""></p>
+<h2 id="构建项目配置"><a href="#构建项目配置" class="headerlink" title="构建项目配置"></a>构建项目配置</h2><ul>
+<li><p><strong>General 部分</strong></p>
+<p>填写项目信息，设置构建参数等</p>
+</li>
+<li><p><strong>源码管理</strong></p>
+<p>可以选择 <strong><em>git</em></strong>,<strong><em>svn</em></strong></p>
+<ul>
+<li><p>git 填入仓库地址及访问密钥（Credentials），指定分支（branch）</p>
+<p><img src="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/jenkins1.png" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p><strong>构建触发器</strong></p>
+<p>可以用git push event触发Jenkins构建，或者定时器构建等</p>
+<p><img src="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/jenkins2.png" alt=""></p>
+</li>
+<li><p><strong>构建环境</strong></p>
+<p>没有特殊需求可以不用理会</p>
+</li>
+<li><p><strong>Pre Steps</strong> </p>
+<p>构建前操作，可以执行shell脚本等根据实际情况处理</p>
+</li>
+<li><p><strong>Build</strong></p>
+<p>pom.xml文件路径</p>
+</li>
+<li><p><strong>Post Steps</strong></p>
+<p>构建完成时操作</p>
+<blockquote>
+<p>触发前置条件：Run only if build succeeds , Run only if build succeeds or is unstable , Run regardless of build result</p>
+<p>如果需要push docker image，可以见选择 <strong><em>Run only if build succeeds</em></strong> 只在构建成功时执行shell完成镜像push</p>
+</blockquote>
+<p>示例shell</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">REGISTRY="ccr.ccs.tencentyun.com/loouss/xxxx"</span><br><span class="line">docker build -t $REGISTRY:$GIT_COMMIT .</span><br><span class="line">docker push $REGISTRY:$GIT_COMMIT</span><br><span class="line">docker rmi $REGISTRY:$GIT_COMMIT</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h1 id="PHP项目"><a href="#PHP项目" class="headerlink" title="PHP项目"></a>PHP项目</h1><p>新建任务时项目类型选择 <strong><em>构建一个自由风格的软件项目</em></strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/jenkins5.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h2 id="构建项目配置-1"><a href="#构建项目配置-1" class="headerlink" title="构建项目配置"></a>构建项目配置</h2><ul>
+<li><p><strong>General</strong></p>
+<p>与java项目同理</p>
+</li>
+<li><p><strong>源码管理</strong></p>
+<p>与java项目同理</p>
+</li>
+<li><p><strong>构建触发器</strong></p>
+<p>与java项目同理</p>
+</li>
+<li><p><strong>构建环境</strong></p>
+<p>与java项目同理</p>
+</li>
+<li><p><strong>构建</strong></p>
+<p>构建步骤可以根据实际项目选择，简单示例可以如下</p>
+<p><img src="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/jenkins6.png" alt=""></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">REGISTRY="ccr.ccs.tencentyun.com/loouss/xxxx"</span><br><span class="line">docker build -t $REGISTRY:$GIT_COMMIT .</span><br><span class="line">docker push $REGISTRY:$GIT_COMMIT</span><br><span class="line">docker rmi $REGISTRY:$GIT_COMMIT</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>构建后操作</strong></p>
+<p>可以根据实际情况选择执行</p>
+<p><img src="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/jenkins7.png" alt=""></p>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-08-16T11:29:48.425Z" itemprop="dateUpdated">2020-08-16 11:29:48</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/08/03/Jenkins%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/" target="_blank" rel="external">https://loouss.github.io/2020/08/03/Jenkins%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://loouss.github.io">
+            <img src="/img/avatar.jpg" alt="Loouss">
+            Loouss
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/08/04/alpine%E9%95%9C%E5%83%8Fapk%E6%BA%90%E4%BF%AE%E6%94%B9/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">alpine镜像apk源修改</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/07/19/PSR-15/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">PSR-15</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Loouss &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
