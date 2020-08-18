@@ -40,3 +40,19 @@ docker volume create gitlab-runner-config
 docker run -d --name gitlab-runner --restart always -v /var/run/docker.sock:/var/run/docker.sock -v gitlab-runner-config:/etc/gitlab-runner gitlab/gitlab-runner:latest
 ~~~
 
+# 非交互式注册
+
+~~~shell
+docker run --rm -it -v /application/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register \
+  --non-interactive \
+  --url "http://127.0.0.1:8080/" \
+  --registration-token "tc-noUPFsBsxhfzo68o2" \
+  --executor "docker" \
+  --docker-image alpine:latest \
+  --description "runner" \
+  --tag-list "docker,aws" \
+  --run-untagged \
+  --locked="false"
+~~~
+
+> 上面命令中请替换你实际的 **url** 和 **token**

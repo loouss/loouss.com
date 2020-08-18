@@ -16,7 +16,7 @@ gitlab-rails runner 'User.find_each(&:disable_two_factor!)'
 
 > 关闭所有用户二次验证
 
-# 提换或者丢失**/etc/gitlab**目录下密钥后，postgresql数据库中存储的token失效
+# 重启gitlab，或者密钥文件丢失
 
 > 删除项目web页面500错误，ci/cd 页面500错误。
 
@@ -42,3 +42,13 @@ UPDATE 6
 ~~~
 
 > 此方法会重置有所有项目的token，谨慎操作。
+
+## 方法三
+
+~~~shell
+gitlab-rails dbconsole
+gitlabhq_production=> UPDATE Projects SET runners_token = null, runners_token_encrypted = null WHERE name = 'cicd-test';
+UPDATE 1
+~~~
+
+> 重置单个项目**token**
