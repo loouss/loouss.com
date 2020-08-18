@@ -34,7 +34,7 @@
 <meta property="og:description" content="注册runner，生成配置文件从本地指定目录注册1docker run --rm -it -v &#x2F;application&#x2F;gitlab-runner&#x2F;config:&#x2F;etc&#x2F;gitlab-runner gitlab&#x2F;gitlab-runner register   &#x2F;application&#x2F;gitlab-runner&#x2F;config本地目录路径  使用volumes注册1docker run --r">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-17T17:58:41.000Z">
-<meta property="article:modified_time" content="2020-08-17T10:20:51.217Z">
+<meta property="article:modified_time" content="2020-08-18T08:15:27.688Z">
 <meta property="article:author" content="Loouss">
 <meta name="twitter:card" content="summary">
     
@@ -156,7 +156,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#注册runner，生成配置文件"><span class="post-toc-number">1.</span> <span class="post-toc-text">注册runner，生成配置文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#从本地指定目录注册"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">从本地指定目录注册</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用volumes注册"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">使用volumes注册</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#启动runner"><span class="post-toc-number">2.</span> <span class="post-toc-text">启动runner</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#从本地指定目录启动"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">从本地指定目录启动</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用volumes启动"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">使用volumes启动</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#注册runner，生成配置文件"><span class="post-toc-number">1.</span> <span class="post-toc-text">注册runner，生成配置文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#从本地指定目录注册"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">从本地指定目录注册</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用volumes注册"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">使用volumes注册</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#启动runner"><span class="post-toc-number">2.</span> <span class="post-toc-text">启动runner</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#从本地指定目录启动"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">从本地指定目录启动</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用volumes启动"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">使用volumes启动</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#非交互式注册"><span class="post-toc-number">3.</span> <span class="post-toc-text">非交互式注册</span></a></li></ol>
         </nav>
     </aside>
 
@@ -195,6 +195,11 @@
 </blockquote>
 <h2 id="使用volumes启动"><a href="#使用volumes启动" class="headerlink" title="使用volumes启动"></a>使用<strong>volumes</strong>启动</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker volume create gitlab-runner-config</span><br><span class="line"></span><br><span class="line">docker run -d --name gitlab-runner --restart always -v /var/run/docker.sock:/var/run/docker.sock -v gitlab-runner-config:/etc/gitlab-runner gitlab/gitlab-runner:latest</span><br></pre></td></tr></table></figure>
 
+<h1 id="非交互式注册"><a href="#非交互式注册" class="headerlink" title="非交互式注册"></a>非交互式注册</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm -it -v /application/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register \</span><br><span class="line">  --non-interactive \</span><br><span class="line">  --url "http://127.0.0.1:8080/" \</span><br><span class="line">  --registration-token "tc-noUPFsBsxhfzo68o2" \</span><br><span class="line">  --executor "docker" \</span><br><span class="line">  --docker-image alpine:latest \</span><br><span class="line">  --description "runner" \</span><br><span class="line">  --tag-list "docker,aws" \</span><br><span class="line">  --run-untagged \</span><br><span class="line">  --locked="false"</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面命令中请替换你实际的 <strong>url</strong> 和 <strong>token</strong></p>
+</blockquote>
 
         </div>
 
@@ -203,7 +208,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-08-17T10:20:51.217Z" itemprop="dateUpdated">2020-08-17 10:20:51</time>
+    Last updated: <time datetime="2020-08-18T08:15:27.688Z" itemprop="dateUpdated">2020-08-18 08:15:27</time>
 </span><br>
 
 
