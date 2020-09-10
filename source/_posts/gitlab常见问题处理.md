@@ -32,13 +32,17 @@ gitlabhq_production=> SELECT name, runners_token_encrypted FROM Projects WHERE N
 ## 方法二 
 
 ~~~shell
-gitlab-rails dbconsole
-gitlabhq_production=> UPDATE projects SET runners_token = null, runners_token_encrypted = null;
-UPDATE 11
+root@gitlab:/# gitlab-rails dbconsole
+psql (11.7)
+Type "help" for help.
+
+gitlabhq_production=> UPDATE projects SET runners_token = null, runners_token_encrypted = null; 
+UPDATE 17
 gitlabhq_production=> UPDATE namespaces SET runners_token = null, runners_token_encrypted = null;
-UPDATE 23
-gitlabhq_production=> UPDATE application_settings SET runners_registration_token_encrypted = null;
-UPDATE 6
+UPDATE 9
+gitlabhq_production=>  UPDATE application_settings SET runners_registration_token_encrypted = null;
+UPDATE 1
+gitlabhq_production=> 
 ~~~
 
 > 此方法会重置有所有项目的token，谨慎操作。
@@ -52,3 +56,18 @@ UPDATE 1
 ~~~
 
 > 重置单个项目**token**
+
+# SSH 无法连接
+
+~~~shell
+λ git pull
+Connection closed by xx.xx.xx.xx port 22
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+~~~
+
+## 解决方法
+删除**/etc/gitlab**下的所有文件
+> 注意删除之前备份文件
