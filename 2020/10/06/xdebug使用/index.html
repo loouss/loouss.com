@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?12e321e197d202cf8342c4edea9bf19a"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>xdebug使用 | Loouss</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="xdebug安装 xdebug官网   Linux &amp; Macs 1pecl install xdebug 修改php.ini文件 1zend_extension&#x3D;&quot;&#x2F;xxx&#x2F;xxx&#x2F;xdebug.so&quot; windows下载对应版本 修改php.ini文件 1zend_extension&#x3D;&quot;&#x2F;xxx&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xdebug使用">
+<meta property="og:url" content="https://loouss.github.io/2020/10/06/xdebug%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="Loouss">
+<meta property="og:description" content="xdebug安装 xdebug官网   Linux &amp; Macs 1pecl install xdebug 修改php.ini文件 1zend_extension&#x3D;&quot;&#x2F;xxx&#x2F;xxx&#x2F;xdebug.so&quot; windows下载对应版本 修改php.ini文件 1zend_extension&#x3D;&quot;&#x2F;xxx&amp;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/20201007213730.png">
+<meta property="og:image" content="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/20201007220952.png">
+<meta property="article:published_time" content="2020-10-06T09:23:18.000Z">
+<meta property="article:modified_time" content="2020-10-07T14:21:24.956Z">
+<meta property="article:author" content="Loouss">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/20201007213730.png">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Loouss</h5>
+          <a href="mailto:loouss.ls@gmail.com" title="loouss.ls@gmail.com" class="mail">loouss.ls@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/loouss" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">xdebug使用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">xdebug使用</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-10-06T09:23:18.000Z" itemprop="datePublished" class="page-time">
+  2020-10-06
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#xdebug安装"><span class="post-toc-number">1.</span> <span class="post-toc-text">xdebug安装</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#xdebug配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">xdebug配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#远程调试"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">远程调试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#性能分析"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">性能分析</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#基本原理"><span class="post-toc-number">3.</span> <span class="post-toc-text">基本原理</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-xdebug使用"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">xdebug使用</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-10-06 09:23:18" datetime="2020-10-06T09:23:18.000Z"  itemprop="datePublished">2020-10-06</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="xdebug安装"><a href="#xdebug安装" class="headerlink" title="xdebug安装"></a>xdebug安装</h1><blockquote>
+<p><a href="https://xdebug.org/" target="_blank" rel="noopener">xdebug</a>官网</p>
+</blockquote>
+<ul>
+<li><p>Linux &amp; Macs</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pecl install xdebug</span><br></pre></td></tr></table></figure>
+<p>修改<strong>php.ini</strong>文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zend_extension&#x3D;&quot;&#x2F;xxx&#x2F;xxx&#x2F;xdebug.so&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>windows<br><a href="https://xdebug.org/download" target="_blank" rel="noopener">下载</a>对应版本</p>
+<p>修改<strong>php.ini</strong>文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zend_extension&#x3D;&quot;&#x2F;xxx&#x2F;xxx&#x2F;xdebug.dll&quot;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="xdebug配置"><a href="#xdebug配置" class="headerlink" title="xdebug配置"></a>xdebug配置</h1><h3 id="远程调试"><a href="#远程调试" class="headerlink" title="远程调试"></a>远程调试</h3><ul>
+<li><strong>boolean</strong> xdebug.auto_trace = false<blockquote>
+<p> 启用改配置，将在脚本调用前启用追踪。cli模式下需要启用改配置，以开启追踪。</p>
+</blockquote>
+</li>
+<li><strong>string</strong> xdebug.remote_addr_header = “”<blockquote>
+<p>配置header与<strong>xdebug.remote_connect_back</strong> 一起使用</p>
+</blockquote>
+</li>
+<li><strong>boolean</strong> xdebug.remote_connect_back = false<blockquote>
+<p>检查 <strong>$_SERVER</strong> 数组中变量</p>
+</blockquote>
+</li>
+<li><strong>boolean</strong> xdebug.remote_autostart = false<blockquote>
+<p>启用改配置，xdebug将始终尝试远程调试会话开始</p>
+</blockquote>
+</li>
+<li><strong>integer</strong> xdebug.remote_cookie_expire_time = 3600<blockquote>
+<p>会话保持时间</p>
+</blockquote>
+</li>
+<li><strong>boolean</strong> xdebug.remote_enable = false<blockquote>
+<p>是否连接一个远程调试客户端</p>
+</blockquote>
+</li>
+<li><strong>string</strong> xdebug.remote_handler = dbgp<blockquote>
+<p>调试协议，目前仅支持<strong>dbgp</strong></p>
+</blockquote>
+</li>
+<li><strong>string</strong> xdebug.remote_host = localhost<blockquote>
+<p>调试客户端地址</p>
+</blockquote>
+</li>
+<li><strong>integer</strong> xdebug.remote_port = 9000<blockquote>
+<p>调试客户端监听端口</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h3><ul>
+<li>integer xdebug.profiler_aggregate = 0<blockquote>
+<p>设置值为1，开启聚合统计</p>
+</blockquote>
+</li>
+<li>integer xdebug.profiler_append = 0<blockquote>
+<p>设置值为1，文件不会被覆盖</p>
+</blockquote>
+</li>
+<li>integer xdebug.profiler_enable = 0<blockquote>
+<p>设置值为1，开起性能分析</p>
+</blockquote>
+</li>
+<li>integer xdebug.profiler_enable_trigger = 0<blockquote>
+<p>设置值为1，开起性能触发器</p>
+</blockquote>
+</li>
+<li>string xdebug.profiler_enable_trigger_value = “”<blockquote>
+<p>触发器匹配的值</p>
+</blockquote>
+</li>
+<li>string xdebug.profiler_output_dir = /tmp<blockquote>
+<p>分析文件输出的文件目录</p>
+</blockquote>
+</li>
+<li>string xdebug.profiler_output_name = cachegrind.out.%p<blockquote>
+<p>文件名称</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>更多及详情配置请参考<a href="https://xdebug.org/docs/all_settings" target="_blank" rel="noopener">文档</a></p>
+</blockquote>
+<h1 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h1><p>如果使用phpstorm，配置<strong>dbgp proxy</strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/20201007213730.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>在php.ini配置xdebug remote信息</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://loouss-1252083494.cos.ap-chongqing.myqcloud.com/blog/20201007220952.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>开启了xdebug.auto_trace配置的话，可以不添加触发方式（如谷歌浏览器插件xdebug-helper，在cookie中添加XDEBUG_*），只需要在ide中添加断点即可，这种方式也适用调试CLI方式运行的脚本。</p>
+<blockquote>
+<p>zendvm检测开启了xdebug，会判断是否需要触发条件，有触发条件，连接远程调试客户端，判断是否有断点，有断点则停止在断点处，调试客户端发出指令（执行下一行代码或者跳过函数等）继续执行。</p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-10-07T14:21:24.956Z" itemprop="dateUpdated">2020-10-07 14:21:24</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/10/06/xdebug%E4%BD%BF%E7%94%A8/" target="_blank" rel="external">https://loouss.github.io/2020/10/06/xdebug%E4%BD%BF%E7%94%A8/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://loouss.github.io">
+            <img src="/img/avatar.jpg" alt="Loouss">
+            Loouss
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/08/17/docker%E8%BF%90%E8%A1%8Cgitlab-runner/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">docker运行gitlab-runner</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Loouss &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(つェ⊂)!!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
